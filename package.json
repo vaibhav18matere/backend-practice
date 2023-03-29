@@ -1,0 +1,23 @@
+{
+  "name": "backend-practice",
+  "version": "1.0.0",
+  "description": "learning basics of node.js and express.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaibhav18matere/backend-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaibhav18matere/backend-practice/issues"
+  },
+  "homepage": "https://github.com/vaibhav18matere/backend-practice#readme",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
