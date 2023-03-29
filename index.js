@@ -6,6 +6,7 @@
 import http from "http";
 import blogSub from "./fileBasedModuleEx.js"; //default export
 import { percentScore } from "./fileBasedModuleEx.js"; // named export
+import fs from "fs";
 
 const server = http.createServer((req, res) => {
   // console.log("check server");
@@ -14,9 +15,11 @@ const server = http.createServer((req, res) => {
   // res.end("<h1>ending unlimited loading</h1>");
 
   if (req.url === "/") {
-    res.end(`Home ${percentScore()} score`);
+    fs.readFile("./index.html", (err, home) => {
+      res.end(home);
+    });
   } else if (req.url === "/projects") {
-    res.end(`Projects`);
+    res.end(`Projects ${percentScore()}`);
   } else if (req.url === "/blogs") {
     res.end(`Blogs subjects are ${blogSub}`);
   } else {
