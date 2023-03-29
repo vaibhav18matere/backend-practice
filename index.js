@@ -7,6 +7,10 @@ import http from "http";
 import blogSub from "./fileBasedModuleEx.js"; //default export
 import { percentScore } from "./fileBasedModuleEx.js"; // named export
 import fs from "fs";
+import path from "path";
+
+console.log(path.dirname("/route/basicAuth/index.js"));
+console.log(path.basename("/home/login/app.html"));
 
 const server = http.createServer((req, res) => {
   // console.log("check server");
