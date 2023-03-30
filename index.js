@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 
+import mongoose from "mongoose";
 const app = express(); // server created
 
 app.set("view engine", "ejs");
@@ -53,6 +54,17 @@ app.post("/contact", (req, res) => {
 //   // console.log(path.join(pathLocation, "./index.html"));
 //   res.sendFile(path.join(pathLocation, "./index.html"));
 // });
+
+mongoose
+  .connect("mongodb://localhost:27017", {
+    dbName: "formDB",
+  })
+  .then(() => console.log("connectiong with db successful!!!"))
+  .catch(() => console.log("db not connected"));
+
+app.get("/add", (req, res) => {
+  res.send("connected mongodb");
+});
 
 app.listen(5000, () => {
   console.log("server on port 5000");
