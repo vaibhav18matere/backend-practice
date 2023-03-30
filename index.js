@@ -9,6 +9,9 @@ app.get("/", (req, res) => {
   res.render("index", { name: "VAIBHAV", age: 25 });
 });
 
+// to access static path / folder, we use app.use() and add middleware
+app.use(express.static(path.join(path.resolve(), "public")));
+
 // app.get("/user", (req, res) => {
 //   res.json({
 //     name: "vaibhav",

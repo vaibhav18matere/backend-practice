@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- here it is taking CSS file from root; which it should not -->
+    <title>project</title>
+  </head>
+  <body>
+    <h3>project page is listed here using res.render and embedded js - ejs</h3>
+    <h4>My name is - <%=name%></h4>
+    <p>this value is passed from index.ejs file</p>
+    <p>to safeguard we use locals</p>
+    <h4>Age - <%=locals.agees%></h4>
+    <!-- wrong variable - agees is passed here -->
+    <script src="script.js"></script>
+    <!-- here it is taking JS file from root; which it should not -->
+  </body>
+</html>
