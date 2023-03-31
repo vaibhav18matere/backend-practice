@@ -62,8 +62,23 @@ mongoose
   .then(() => console.log("connectiong with db successful!!!"))
   .catch(() => console.log("db not connected"));
 
+const messageSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+});
+
+const userInfo = mongoose.model("Users", messageSchema);
+
 app.get("/add", (req, res) => {
-  res.send("connected mongodb");
+  userInfo
+    .create({
+      name: "Test Creddentials",
+      email: "test123@gmailcom",
+    })
+    .then(() => {
+      res.send("connected mongodb - now schema is created");
+      // go to "/add" url and check compass data is there after reloading
+    });
 });
 
 app.listen(5000, () => {
