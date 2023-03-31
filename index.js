@@ -15,8 +15,6 @@ app.get("/success", (req, res) => {
   res.render("success");
 });
 
-let tempUsers = [];
-
 // to access static path / folder, we use app.use() and add middleware
 app.use(express.static(path.join(path.resolve(), "public")));
 app.use(express.urlencoded({ extended: true }));
@@ -37,23 +35,15 @@ app.get("/users", (req, res) => {
   });
 });
 
-app.post("/contact", (req, res) => {
-  tempUsers.push({ userName: req.body.name, userEmail: req.body.email });
+app.post("/contact", async (req, res) => {
+  const userDataReceived = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+  console.log(userDataReceived);
+  await userInfo.create(userDataReceived);
   res.redirect("/success");
 });
-
-// app.get("/user", (req, res) => {
-//   res.json({
-//     name: "vaibhav",
-//     age: 25,
-//   });
-// });
-
-// app.get("/blog", (req, res) => {
-//   const pathLocation = path.resolve();
-//   // console.log(path.join(pathLocation, "./index.html"));
-//   res.sendFile(path.join(pathLocation, "./index.html"));
-// });
 
 mongoose
   .connect("mongodb://localhost:27017", {
