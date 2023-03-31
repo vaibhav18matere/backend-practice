@@ -36,12 +36,9 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/contact", async (req, res) => {
-  const userDataReceived = {
-    name: req.body.name,
-    email: req.body.email,
-  };
-  console.log(userDataReceived);
-  await userInfo.create(userDataReceived);
+  const { name, email } = req.body;
+
+  await userInfo.create({ name, email });
   res.redirect("/success");
 });
 
