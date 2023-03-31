@@ -69,16 +69,13 @@ const messageSchema = new mongoose.Schema({
 
 const userInfo = mongoose.model("Users", messageSchema);
 
-app.get("/add", (req, res) => {
-  userInfo
-    .create({
-      name: "Test Creddentials",
-      email: "test123@gmailcom",
-    })
-    .then(() => {
-      res.send("connected mongodb - now schema is created");
-      // go to "/add" url and check compass data is there after reloading
-    });
+app.get("/add", async (req, res) => {
+  await userInfo.create({
+    name: "Test Credentials",
+    email: "test123@gmail.com",
+  });
+  res.send("connected mongodb - now schema is created");
+  // go to "/add" url and check compass data is there after reloading
 });
 
 app.listen(5000, () => {
