@@ -8,10 +8,10 @@ app.set("view engine", "ejs");
 
 app.use(cookieParser());
 
-const isAuthenticatedCheck = (req, res) => {
+const isAuthenticatedCheck = (req, res, next) => {
   const { token } = req.cookies;
   if (token) {
-    res.render("logout");
+    next();
   } else {
     res.render("login");
   }
