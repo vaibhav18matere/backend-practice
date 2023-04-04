@@ -1,19 +1,35 @@
 import express from "express";
 import path from "path";
-
+import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 const app = express(); // server created
 
 app.set("view engine", "ejs");
 
+app.use(cookieParser());
+
 app.get("/", (req, res) => {
   console.log(req.cookies);
+  const { token } = req.cookies;
+  if (token) {
+    res.render("logout");
+  } else {
+    res.render("login");
+  }
 });
 
 app.post("/login", (req, res) => {
   res.cookie("token", "cookieIsThere", {
     httpOnly: true,
     // expires: new Date(Date.now() + 40 * 1000),
+  });
+  res.redirect("/");
+});
+
+app.get("/logout", (req, res) => {
+  res.cookie("token", null, {
+    httpOnly: true,
+    expires: new Date(Date.now()),
   });
   res.redirect("/");
 });
