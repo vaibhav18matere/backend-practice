@@ -9,19 +9,23 @@
     <title>project</title>
   </head>
   <body>
-    <h3>project page is listed here using res.render and embedded js - ejs</h3>
-    <h4>My name is - <%=name%></h4>
-    <p>this value is passed from index.ejs file</p>
-    <p>to safeguard we use locals</p>
-    <h4>Age - <%=locals.agees%></h4>
-    <!-- wrong variable - agees is passed here -->
     <main class="form-container">
-     <form class="form-contact" method="post" action="contact">
-          <h3 class="contact-now">Contact Now</h3>
-          <input class="form-ip" type="text" name="name" placeholder="enter name"/>
-          <input class="form-ip" type="email"name="email" placeholder="enter email"/>
-          <button class="send-msg" type="submit">send message</button>
-     </form>
+      <form class="form-contact" method="post" action="/login">
+        <h3 class="contact-now">Contact Now</h3>
+        <input
+          class="form-ip"
+          type="text"
+          name="name"
+          placeholder="enter name"
+        />
+        <input
+          class="form-ip"
+          type="email"
+          name="email"
+          placeholder="enter email"
+        />
+        <button class="send-msg" type="submit">send message</button>
+      </form>
     </main>
     <script src="script.js"></script>
     <!-- here it is taking JS file from root; which it should not -->

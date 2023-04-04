@@ -7,7 +7,15 @@ const app = express(); // server created
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index", { name: "VAIBHAV", age: 25 });
+  console.log(req.cookies);
+});
+
+app.post("/login", (req, res) => {
+  res.cookie("token", "cookieIsThere", {
+    httpOnly: true,
+    // expires: new Date(Date.now() + 40 * 1000),
+  });
+  res.redirect("/");
 });
 
 // make route for success
